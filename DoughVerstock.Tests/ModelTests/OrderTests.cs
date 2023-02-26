@@ -11,6 +11,12 @@ public class OrderTests : IDisposable
   {
     Order.ClearCounter();
   }
+  Vendor testVendor;
+  [TestInitialize]
+  public void TestInitialize()
+  {
+    testVendor = new Vendor("Name", "Description");
+  }
 
   [TestMethod]
   public void OrderConstructor_CreatesInstanceOfOrder_Order()
