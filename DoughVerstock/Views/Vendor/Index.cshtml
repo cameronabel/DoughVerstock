@@ -1,0 +1,13 @@
+@{
+  Layout = "_Layout";
+}
+@using DoughVerstock.Models;
+<h3>Vendors</h3>
+<a href="/vendors/new">add vendor</a>
+<hr>
+<ul>
+  @foreach (KeyValuePair<int, Vendor> kvp in Model)
+  {
+    <li><a href='/vendors/@kvp.Key'>@kvp.Value.Name</a></li>
+  }
+</ul>

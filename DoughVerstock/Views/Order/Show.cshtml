@@ -1,0 +1,15 @@
+@{
+  Layout = "_Layout";
+}
+@using DoughVerstock.Models
+
+<h4>Order # @Model.ID - @Model.Date</h4>
+@Vendor.Database[Model.VendorID].Name
+<ul>
+@foreach (Good good in Model.Cart)
+{
+  @good.Label
+}
+</ul>
+<p>Total price: @Model.GetTotalPrice()</p>
+<a href='/vendors/@Model.VendorID'>Back to @Vendor.Database[Model.VendorID].Name</a>

@@ -8,6 +8,14 @@ public class Good
   public int BXGO { get; set; }
   private int _basePrice;
   private string _name;
+  public Good(string name, int basePrice)
+  {
+    Label = name;
+    _name = name;
+    _basePrice = basePrice;
+    Price = basePrice;
+    Quantity = 1;
+  }
   public void MultiLabel()
   {
     Label = $"{Quantity,2} x {_name} @ {_basePrice} ea";
@@ -24,13 +32,5 @@ public class Good
       int mod = Quantity % (BXGO + 1);
       Price = _basePrice * BXGO * div + _basePrice * mod;
     }
-  }
-  public Good(string name, int basePrice)
-  {
-    Label = name;
-    _name = name;
-    _basePrice = basePrice;
-    Price = basePrice;
-    Quantity = 1;
   }
 }

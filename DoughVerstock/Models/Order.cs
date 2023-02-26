@@ -1,17 +1,26 @@
-using System.Collections.Generic;
-using System;
-using System.Linq;
-
 namespace DoughVerstock.Models;
 
 public class Order
 {
   public List<Good> Cart { get; set; }
   public int ID { get; }
-
+  public int Price { get; set; }
+  public DateTime Date { get; }
   private static int _runningCounter = new int();
-
-  public static void ClearAll()
+  public static SortedDictionary<int, Order> Database = new SortedDictionary<int, Order>() { };
+  public int VendorID { get; set; }
+  public Order(int vendorID)
+  {
+    _runningCounter++;
+    ID = _runningCounter;
+    Cart = new List<Good>() { };
+    Price = 0;
+    Date = DateTime.Now;
+    Database[ID] = this;
+    VendorID = vendorID;
+    Vendor.Database[VendorID].Orders.Add(this);
+  }
+  public static void ClearCounter()
   {
     _runningCounter = 0;
   }
@@ -62,20 +71,14 @@ public class Order
   public string StringReceipt()
   {
     string receipt = "";
-    int total = 0;
+    Price = 0;
     foreach (Good good in Cart)
     {
       receipt += $"    {good.Label,32}    {good.Price,4}    \n";
-      total += good.Price;
+      Price += good.Price;
     }
     receipt += $"    {new string('─', 40)}    \n";
-    receipt += $"{"TOTAL: " + total.ToString(),44}    ";
+    receipt += $"{"TOTAL: " + Price.ToString(),44}    ";
     return receipt;
-  }
-  public Order()
-  {
-    _runningCounter++;
-    ID = _runningCounter;
-    Cart = new List<Good>() { };
   }
 }

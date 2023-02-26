@@ -10,14 +10,14 @@ body {
   font-family: 'Poppins', sans-serif;
   font-family: 'PT Sans', sans-serif;
   font-size: 14px;
-  color: #EEEEEE;
-  background-color: #121212;
+  color: #333;
+  background-color: #eeeeee;
 }
 
 nav {
   display: flex;
   align-items: center;
-  background-color: #3c4042;
+  background-color: #4288C3;
   margin-bottom: 1.5em;
   min-width: 840px;
 }
@@ -28,9 +28,10 @@ nav {
 }
 
 #nav-logo{
-  width: 10em;
-  padding: .3em;
-  padding-left: 0;
+  text-decoration: none;
+  color: #eeeeee;
+  font-size: xx-large;
+  font-weight: 600;
 }
 
 #gh-logo{
@@ -70,7 +71,16 @@ div#footer {
   bottom:0px;
   left:0px;
   width:100%;
-  color:#CCC;
-  background:#333;
+  color:#eeeeee;
+  background:#4288C3;
   padding:8px;
+  text-align: center;
+}
+
+#description {
+  width: 400px;
+}
+
+#name {
+  width: 200px;
 }

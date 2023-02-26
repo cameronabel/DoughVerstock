@@ -1,0 +1,32 @@
+@{
+  Layout = "_Layout";
+}
+
+<p>@Model.Name</p>
+<p>@Model.Description</p>
+<h4>Recent Orders</h4>
+<ul>
+@using DoughVerstock.Models
+
+@{
+  int orderCounter = 0;
+  foreach (Order order in Model.Orders)
+  {
+    <li>
+      <a href="/vendors/@Model.ID/orders/@order.ID">@order.Date @order.GetTotalPrice()</a>
+      <ul>
+      @foreach (Good good in order.Cart)
+      {
+        <li>@good.Label</li>
+      }
+      </ul>
+    </li>
+    orderCounter++;
+    if (orderCounter > 3)
+    {
+      break;
+    }
+  }
+}
+<a href="/vendors/@Model.ID/orders">Full order history</a>
+</ul>
