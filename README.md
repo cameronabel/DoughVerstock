@@ -24,7 +24,7 @@ _Dough-verstock is a sample web application utilizing the ASP.NET MVC and demons
 
 To run unit tests:
 
-- Navigate to `DoughVerstock.Solution\Bakery.DoughVerstock`
+- Navigate to `DoughVerstock.Solution\DoughVerstock.Tests`
 - Execute `dotnet test`
 
 This project requires the [.NET framework](https://dotnet.microsoft.com/en-us/download) to launch.
