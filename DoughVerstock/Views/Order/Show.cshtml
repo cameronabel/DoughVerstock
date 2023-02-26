@@ -12,4 +12,25 @@
 }
 </ul>
 <p>Total price: $@Model.GetTotalPrice()</p>
+@{
+  int bread = 0;
+  int pastry = 0;
+  int croissant = 0;
+  foreach (Good good in Model.Cart)
+  {
+    if (good.Name == "Bread")
+    {
+      bread += good.Quantity;
+    }
+    else if (good.Name == "Pastry")
+    {
+      pastry += good.Quantity;
+    }
+    else if (good.Name == "Croissant")
+    {
+      croissant += good.Quantity;
+    }
+  }
+}
+<a href="/vendors/@Model.VendorID/orders/new?bread=@bread&pastry=@pastry&croissant=@croissant"><button class='btn btn-primary'>Order Again</button></a><br>
 <a href='/vendors/@Model.VendorID'>Back to @Vendor.Database[Model.VendorID].Name</a>

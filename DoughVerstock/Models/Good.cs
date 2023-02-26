@@ -7,18 +7,18 @@ public class Good
   public int Quantity { get; set; }
   public int BXGO { get; set; }
   private int _basePrice;
-  private string _name;
+  public string Name { get; set; }
   public Good(string name, int basePrice)
   {
     Label = name;
-    _name = name;
+    Name = name;
     _basePrice = basePrice;
     Price = basePrice;
     Quantity = 1;
   }
   public void MultiLabel()
   {
-    Label = $"{Quantity,2} x {_name} @ {_basePrice} ea";
+    Label = $"{Quantity,2} x {Name} @ {_basePrice} ea";
     if (BXGO > 0 && Quantity > BXGO)
     {
       Label += $" B{BXGO}G1 DEAL";

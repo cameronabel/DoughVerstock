@@ -14,3 +14,9 @@
   <input id="croissant" name="croissant" type="Number" placeholder="Croissant"><br>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+<script type="text/javascript">
+  let params = (new URL(document.location)).searchParams;
+  document.getElementById('bread').value = params.get('bread');
+  document.getElementById('pastry').value = params.get('pastry');
+  document.getElementById('croissant').value = params.get('croissant');
+</script>
