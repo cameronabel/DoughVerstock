@@ -8,8 +8,8 @@
 <ul>
 @foreach (Good good in Model.Cart)
 {
-  @good.Label
+  <li>@good.Label</li>
 }
 </ul>
-<p>Total price: @Model.GetTotalPrice()</p>
+<p>Total price: $@Model.GetTotalPrice()</p>
 <a href='/vendors/@Model.VendorID'>Back to @Vendor.Database[Model.VendorID].Name</a>

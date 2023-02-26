@@ -39,6 +39,37 @@ public class OrderController : Controller
     }
     return View();
   }
-
+  [HttpGet("/vendors/{vendorid}/orders/new")]
+  public ActionResult New(int vendorid)
+  {
+    Vendor foundVendor;
+    try
+    {
+      foundVendor = Vendor.Database[vendorid];
+      return View(foundVendor);
+    }
+    catch (KeyNotFoundException)
+    {
+      return View();
+    }
+  }
+  [HttpPost("/vendors/{vendorid}/orders")]
+  public ActionResult Create(string vendorid, string bread, string pastry, string croissant)
+  {
+    Order newOrder = new Order(int.Parse(vendorid));
+    if (bread != "0")
+    {
+      newOrder.AddGood(new Bread(int.Parse(bread)));
+    }
+    if (pastry != "0")
+    {
+      newOrder.AddGood(new Pastry(int.Parse(pastry)));
+    }
+    if (croissant != "0")
+    {
+      newOrder.AddGood(new Croissant(int.Parse(croissant)));
+    }
+    return RedirectToPage("");
+  }
 }
 

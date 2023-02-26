@@ -2,13 +2,17 @@
   Layout = "_Layout";
 }
 @using DoughVerstock.Models
+<p>@Model.Name</p>
 <h3>Order History</h3>
-@Model.Name
+@if (Model.Orders.Count == 0)
+{
+          <p><em>Vendor has no order history.</em></p>
+}
 @{
   int counter = 0;
   foreach (Order order in Model.Orders)
   {
-    <li><a href="/vendors/@Model.ID/orders/@order.ID">@order.Date @order.GetTotalPrice()</a></li>
+    <li><a href="/vendors/@Model.ID/orders/@order.ID">@order.Date $@order.GetTotalPrice()</a></li>
     counter++;
     if (counter > 3)
     {

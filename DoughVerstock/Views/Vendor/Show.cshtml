@@ -2,18 +2,26 @@
   Layout = "_Layout";
 }
 
-<p>@Model.Name</p>
+<h2>@Model.Name</h2>
 <p>@Model.Description</p>
-<h4>Recent Orders</h4>
-<ul>
-@using DoughVerstock.Models
+<a href='/vendors/@Model.ID/orders/new'><button class='btn btn-primary'>Place new order</button></a>
 
+<hr>
+<h4>Recent Orders</h4>
+
+@using DoughVerstock.Models
+@if (Model.Orders.Count == 0)
+{
+  <p><em>Vendor has no order history.</em></p>
+}
+<ul>
 @{
   int orderCounter = 0;
+
   foreach (Order order in Model.Orders)
   {
     <li>
-      <a href="/vendors/@Model.ID/orders/@order.ID">@order.Date @order.GetTotalPrice()</a>
+      <a href="/vendors/@Model.ID/orders/@order.ID">@order.Date $@order.GetTotalPrice()</a>
       <ul>
       @foreach (Good good in order.Cart)
       {
@@ -22,11 +30,12 @@
       </ul>
     </li>
     orderCounter++;
-    if (orderCounter > 3)
+    if (orderCounter > 2)
     {
       break;
     }
   }
 }
-<a href="/vendors/@Model.ID/orders">Full order history</a>
+
 </ul>
+<a href="/vendors/@Model.ID/orders">Full order history</a>

@@ -1,0 +1,16 @@
+@{
+  Layout = "_Layout";
+}
+<h3>New Order</h3>
+<hr>
+<form action="/vendors/@Model.ID/orders" method="post">
+  <label for="vendorid">Vendor ID</label><br>
+  <input id="vendorid" name="vendorid" type="Number" placeholder="Vendor ID" value="@Model.ID">
+  <br>
+  <br>
+  <h4>Selections</h4>
+  <input id="bread" name="bread" type="Number" placeholder="Bread"><br>
+  <input id="pastry" name="pastry" type="Number" placeholder="Pastry"><br>
+  <input id="croissant" name="croissant" type="Number" placeholder="Croissant"><br>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
